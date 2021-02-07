@@ -1,0 +1,51 @@
+To start a project:````````````````````````````
+	
+	django-admin startproject djstudent
+
+To start an additional app feature or page:````````````````````````
+
+	python manage.py startapp students
+
+Setip mySql as database in django using:`````````````````````````
+	DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'djstudent',
+        'USER':'root',
+        'PASSWORD': '',
+        'HOST': 'localhost',
+        'PORT': '3306',
+        'OPTIONS':{
+            'sql_mode': 'traditional',
+        }
+    }
+}
+
+Edit students/models.py:```````````````````````````
+
+	from django.db import models
+from django.forms import ModelForm
+
+# Create your models here.
+
+class Students(models.Model):
+    sId = models.IntegerField()
+    f_name = models.CharField(max_length = 55)
+    l_name = models.CharField(max_length =55)
+    email = models.CharField(max_length=111)
+    
+class Meta:
+    db_table = "students"
+
+create a new file students/forms.py then add these:```````````````````````
+	from django import forms
+	from students.models import Students
+
+	class StudentsForm(forms.ModelForm):
+    	class Meta:
+        model = Students
+        fields= "__all__"
+
+add these in students/views.py:````````````````````````````
+
+	

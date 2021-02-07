@@ -1,0 +1,51 @@
+{%extends "students/layout.html"%}
+
+{%block content%}
+<form action="/update/{{students.id}}" method="POST" class="post-form">
+    <input type="hidden" name="id" id="id" required maxlength="20" value="{{students.id}}"/>
+    {%csrf_token%}
+    <div class="container">
+        <br>
+        <div class="form-group row">
+            <label class="col-sm-1 col-form-label"></label>
+            <div class="col-sm-4">
+                <h3>Enter Details</h3>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Students Name:</label>
+            <div class="col-sm-4">
+                <input type="text" name="f_name"  value="{{students.f_name}}"/>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Students Last Name:</label>
+            <div class="col-sm-4">
+                <input type="text" name="l_name"  value="{{students.l_name}}"/>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Students Email:</label>
+            <div class="col-sm-4">
+                <input type="text" name="email"  value="{{students.email}}"/>            </div>
+        </div>
+        
+        <div class="form-group row">
+            <label class="col-sm-1 col-form-label"></label>
+            <div class="col-sm-4">
+                <button type="submit" class="btn btn-primary" >Submit</button>
+            </div>
+        </div>
+
+    </div>
+
+
+</form>
+
+
+
+
+{%endblock content%}
